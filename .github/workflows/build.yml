@@ -15,10 +15,11 @@ jobs:
       run: |
         sudo apt update
         python -m pip install --upgrade pip
-        pip install flake8 pytest
+        pip install pytest pylint
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with pylint
-      run: pylint ecpkeeper
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
     - name: Test with pytest
       run: pytest
     - name: Report Success or failure as github status
