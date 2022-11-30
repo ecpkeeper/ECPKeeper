@@ -1,4 +1,5 @@
-from ecpkeeper.application import Application
+"""Start main loop of application."""
+from ecpkeeper.application import main
 
-app = Application()
-app.mainloop()
+if __name__ == "__main__":
+    main()
