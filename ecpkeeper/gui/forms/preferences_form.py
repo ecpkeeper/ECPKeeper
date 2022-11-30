@@ -7,6 +7,7 @@ from ecpkeeper.views.general_view import PreferencesGeneral
 
 class PreferencesForm(tk.Frame):
     def __init__(self, parent, callbacks, **kwargs):
+        """"""
         super().__init__(parent, **kwargs)
         self.callbacks = callbacks
         self.rowconfigure(0, weight=1)
@@ -32,6 +33,7 @@ class PreferencesForm(tk.Frame):
         self.general_frame.grid(row=0, column=0, sticky='NSEW')
 
     def treeview_select(self, event):  # Don't forget event!
+        """"""
         selection = self.pref_tree.selection()
         iid = selection[0]  # first value in the tuple
         if iid == 'appearance':
