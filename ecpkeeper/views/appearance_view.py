@@ -3,6 +3,7 @@ import tkinter as tk
 
 
 class PreferencesAppearance(tk.Frame):
+    """Preferences - Appearance Form"""
     def __init__(self, parent, callbacks, **kwargs):
         super().__init__(parent, **kwargs)
         self.inputs = {}

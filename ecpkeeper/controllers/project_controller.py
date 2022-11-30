@@ -5,6 +5,7 @@ class ProjectController:
 
     @staticmethod
     def setup(footprint_tab):
+        """Setup Project Controller"""
         upper_frame = UpperFrame(footprint_tab)
         bottom_frame = BottomFrame(footprint_tab)
 
@@ -14,11 +15,12 @@ class ProjectController:
 
 class UpperFrame(Frame):
     def __init__(self, parent):
+        """Setup Upper Frame"""
         Frame.__init__(self, parent)
-        # DistributorsView(Frame)
 
 
 class BottomFrame(Frame):
     def __init__(self, parent):
+        """Setup Bottom Frame"""
         Frame.__init__(self, parent)
 

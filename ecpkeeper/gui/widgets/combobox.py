@@ -3,6 +3,7 @@ import tkinter as tk
 
 
 class Combobox(ttk.Combobox):
+    """ Combobox with validation"""
     def __init__(self, parent, lookups=None, *args, **kwargs):
         super().__init__(parent, **kwargs)
         self.lookups = lookups or {}
@@ -16,6 +17,7 @@ class Combobox(ttk.Combobox):
         )
 
     def _validate_all(self, d, i, P, s, S, v, V):
+        """Validate All"""
         print('d:{} i:{} P:{} s:{} S:{} v:{} V:{}'.format(d, i, P, s, S, v, V))
         if V == 'focusout':
             self._validate_focusout(s)
@@ -24,6 +26,7 @@ class Combobox(ttk.Combobox):
         return True
 
     def _validate_key(self, d, i, P, s, S):
+        """Validate key"""
         if P and d == '1':
             for key in self.lookups:
                 if key.casefold().startswith(P.casefold()):
@@ -37,9 +40,11 @@ class Combobox(ttk.Combobox):
 
     @staticmethod
     def _validate_focusout(s):
+        """Validate Focus Out"""
         s = s.strip()
         return True
 
     @staticmethod
     def _invalid_command(d, i, P, s, S, v, V):
+        """Invalid Command"""
         print('Invalid! d:{} i:{} P:{} s:{} S:{} v:{} V:{}'.format(d, i, P, s, S, v, V))

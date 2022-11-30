@@ -3,6 +3,7 @@ import tkinter as tk
 
 
 class PartView(tk.Frame):
+    """Part view to display adding or editing of Parts"""
     def __init__(self, parent, data, callbacks, edit, **kwargs):
         super().__init__(parent, **kwargs)
         print('Add/Edit Parts View')
@@ -126,6 +127,7 @@ class PartView(tk.Frame):
         self.load_records()
 
     def load_records(self):
+        """Load part data from database into the edit Frame"""
         for key, record in self.data.items():
             print(f'Key: {key}, Value: {record}')
             print(f'Values in self.fields: {self.fields.values()}')
@@ -137,6 +139,7 @@ class PartView(tk.Frame):
                 self.fields[key].insert(tk.END, record)
 
     def get(self):
+        """Saving data to the database"""
         name = self.fields['name'].get()
         description = self.fields['description'].get()
         minimum_stock = self.fields['minimum_stock'].get()

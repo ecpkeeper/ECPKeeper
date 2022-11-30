@@ -1,9 +1,10 @@
 from tkinter import ttk
-import tkinter.font as tkFont
+import tkinter.font as tk_font
 import tkinter as tk
 
 
 class ManufacturersForm(tk.Frame):
+    """Manufacturers Form"""
     def __init__(self, parent, data, callbacks, **kwargs):
         super().__init__(parent, **kwargs)
 
@@ -46,13 +47,15 @@ class ManufacturersForm(tk.Frame):
         self.load_records()
 
     def load_records(self):
+        """Load records into the form"""
         for key, record in self.data.items():
             self.treeview.insert('', 'end', iid=key, text='Manufacturer ID: {}'.format(key),
                                  values=[record['Manufacturer'], record['Part Number']])
 
     def set_headers(self, columns):
+        """Set headers of the Treeview"""
         self.treeview.configure(columns=columns)
         for i, col in enumerate(columns):
-            column_width = tkFont.Font().measure(col.title())
+            column_width = tk_font.Font().measure(col.title())
             self.treeview.heading(i, text=col)
             self.treeview.column(i, width=column_width, stretch=True)
