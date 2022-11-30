@@ -6,11 +6,12 @@ conn = sqlite3.connect('../var/ecpkeeper.db')
 
 
 class PartModel:
-
+    """ Part model with all the calls to handle CRUD for Part"""
     @staticmethod
     def add_part(name, description, category_id, minimum_stock, measurement_unit_id,
                  footprint_id, storage_location_id, comment, production_remarks, status,
                  needs_review, condition, internal_part_number):
+        """ Add Part data to database"""
         cur = conn.cursor()
         with conn:
             cur.execute('insert into part values (null, ?,?,?,?,?,?,?,?,?,?,?,?,?)', (name, description, category_id,
@@ -21,6 +22,7 @@ class PartModel:
 
     @staticmethod
     def view_part_data():
+        """Get all part data from database"""
         cur = conn.cursor()
         with conn:
             cur.execute('select * from part')
@@ -30,6 +32,7 @@ class PartModel:
 
     @staticmethod
     def delete_part_data(part_id):
+        """Delete part from database based on id"""
         cur = conn.cursor()
         with conn:
             cur.execute('delete from part where id=?', (part_id,))
@@ -39,6 +42,7 @@ class PartModel:
     def search_part_data(name="", description="", category_id="", minimum_stock="", measurement_unit_id="",
                          footprint_id="", storage_location_id="", comment="", production_remarks="", status="",
                          needs_review="", condition="", internal_part_number=""):
+        """Search for part in database based on different fields"""
         cur = conn.cursor()
         with conn:
             cur.execute('select * from part where name = ? or description = ? or categoryid = ? or \
@@ -59,6 +63,7 @@ class PartModel:
     def update_part_data(part_id, name="", description="", category_id="", minimum_stock="", measurement_unit_id="",
                          footprint_id="", storage_location_id="", comment="", production_remarks="", status="",
                          needs_review="", condition="", internal_part_number=""):
+        """Update existing part using id"""
         cur = conn.cursor()
         with conn:
             cur.execute('update part set name = ?, description = ?, categoryid = ?, minimumstock = ?, \

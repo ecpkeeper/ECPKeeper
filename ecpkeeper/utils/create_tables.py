@@ -4,8 +4,10 @@ conn = sqlite3.connect('../var/ecpkeeper.db')
 
 
 class CreateTable:
+    """Build database tables"""
     @staticmethod
-    def setup():    
+    def setup():
+        """Connect to database and create each table"""
         c = conn.cursor()
 
         create_category_table(c)
@@ -33,6 +35,7 @@ class CreateTable:
 
 
 def create_category_table(c):
+    """Create Category Table"""
     with conn:
         c.execute("CREATE TABLE IF NOT EXISTS [Category] ( \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -46,6 +49,7 @@ def create_category_table(c):
 
 
 def create_footprint_categories_table(c):
+    """Create Footprint Categories Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [FootPrintCategory] ( \
             [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -59,6 +63,7 @@ def create_footprint_categories_table(c):
 
 
 def create_footprint_table(c):
+    """Create Footprint Table"""
     with conn:
         c.execute("CREATE TABLE IF NOT EXISTS [FootPrint] ( \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -73,6 +78,7 @@ def create_footprint_table(c):
 
 
 def create_distributors_table(c):
+    """Create Distributors Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Distributor] (  \
             [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -90,6 +96,7 @@ def create_distributors_table(c):
 
 
 def create_manufacturers_table(c):
+    """Create Manufacturers Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Manufacturer] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -107,6 +114,7 @@ def create_manufacturers_table(c):
 
 
 def create_attachments_table(c):
+    """Create Attachments Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Attachment] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -119,6 +127,7 @@ def create_attachments_table(c):
 
 
 def create_si_prefixes_table(c):
+    """Create Si Prefixes Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [SIPrefix] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -131,6 +140,7 @@ def create_si_prefixes_table(c):
 
 
 def create_units_table(c):
+    """Create Units Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Unit] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -142,6 +152,7 @@ def create_units_table(c):
 
 
 def create_unit_si_prefixes_table(c):
+    """Create Unit Si Prefixes Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [PartSIPrefix] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -155,6 +166,7 @@ def create_unit_si_prefixes_table(c):
 
 
 def create_measurement_units_table(c):
+    """Create Measurement Units Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [MeasurementUnit] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -166,6 +178,7 @@ def create_measurement_units_table(c):
 
 
 def create_storage_location_categories_table(c):
+    """Create Storage Location Categories Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [StorageLocationCategory] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -179,6 +192,7 @@ def create_storage_location_categories_table(c):
 
 
 def create_storage_locations_table(c):
+    """Create Storage Location Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [StorageLocation] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -192,6 +206,7 @@ def create_storage_locations_table(c):
 
 
 def create_parameters_table(c):
+    """Create Parameters Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Parameter] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -213,6 +228,7 @@ def create_parameters_table(c):
 
 
 def create_parts_table(c):
+    """Create Part Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Part] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -239,6 +255,7 @@ def create_parts_table(c):
 
 
 def create_stock_history_table(c):
+    """Create Stock history Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [StockHistory] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -252,6 +269,7 @@ def create_stock_history_table(c):
 
 
 def create_part_parameters_table(c):
+    """Create Part Parameters Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [PartParameter] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -265,6 +283,7 @@ def create_part_parameters_table(c):
 
 
 def create_projects_table(c):
+    """Create Projects Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [Project] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -276,6 +295,7 @@ def create_projects_table(c):
 
 
 def create_project_parts_table(c):
+    """Create Project Parts Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [ProjectPart] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -294,6 +314,7 @@ def create_project_parts_table(c):
 
 
 def create_project_attachments_table(c):
+    """Create Project Attachments Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [ProjectAttachment] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -308,6 +329,7 @@ def create_project_attachments_table(c):
 
 
 def create_part_distributors_table(c):
+    """Create Part Distributors Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [PartDistributor] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -329,6 +351,7 @@ def create_part_distributors_table(c):
 
 
 def create_part_manufacturers_table(c):
+    """Create Part Manufacturers Table"""
     with conn:
         c.execute('CREATE TABLE IF NOT EXISTS [PartManufacturers] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \

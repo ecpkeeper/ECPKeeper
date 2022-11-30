@@ -23,6 +23,7 @@ from sqlalchemy.orm import sessionmaker
 from ecpkeeper import menus
 from ecpkeeper import config
 from ecpkeeper.controllers.project_controller import ProjectController
+from ecpkeeper.views.parts_management_treeview_view import PartsManagementForm
 from . import gui
 
 
@@ -77,6 +78,8 @@ class Win(tk.Tk):
         self.parts_management_tab = tk.Frame(self.custom_notebook)
         self.custom_notebook.add(self.parts_management_tab, text="Parts Management")
         self.custom_notebook.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
+        self.parts_management = PartsManagementForm(self.parts_management_tab, {}, self.callbacks)
+        self.parts_management.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
         self.part_form_window = None
         self.part_form = None

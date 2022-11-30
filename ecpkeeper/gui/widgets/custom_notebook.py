@@ -50,6 +50,7 @@ class CustomNotebook(ttk.Notebook):
         self._active = None
 
     def __initialize_custom_style(self):
+        """Init Custom Style"""
         style = ttk.Style()
         self.images = (
             tk.PhotoImage("img_close", data='''

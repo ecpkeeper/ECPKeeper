@@ -24,8 +24,10 @@ logger.addHandler(stream_handler)
 
 
 class CategoryModel:
+    """Category model with all the calls to handle CRUD for Category"""
     @staticmethod
     def add_category(name, description, parent_id=""):
+        """ Add Category data to database"""
         conn = sqlite3.connect('../ecpkeeper.db')
         cur = conn.cursor()
         with conn:
@@ -36,6 +38,7 @@ class CategoryModel:
 
     @staticmethod
     def view_category_data():
+        """Get all Category data from database"""
         conn = sqlite3.connect('../ecpkeeper.db')
         cur = conn.cursor()
         with conn:
@@ -46,6 +49,7 @@ class CategoryModel:
 
     @staticmethod
     def delete_category_data(id):
+        """Delete Category from database based on id"""
         conn = sqlite3.connect('../ecpkeeper.db')
         cur = conn.cursor()
         with conn:
@@ -54,6 +58,7 @@ class CategoryModel:
 
     @staticmethod
     def search_category_data(name="", description="", parent_id=""):
+        """Search for Category in database based on different fields"""
         conn = sqlite3.connect('../ecpkeeper.db')
         cur = conn.cursor()
         with conn:
@@ -65,6 +70,7 @@ class CategoryModel:
 
     @staticmethod
     def update_category_data(id, name, description, parent_id=""):
+        """Update existing Category using id"""
         conn = sqlite3.connect('../ecpkeeper.db')
         cur = conn.cursor()
         with conn:
