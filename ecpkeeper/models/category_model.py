@@ -24,19 +24,39 @@ logger.addHandler(stream_handler)
 
 
 class CategoryModel:
+<<<<<<< Updated upstream
     @staticmethod
     def add_category(name, description, parent_id=""):
         conn = sqlite3.connect('../ecpkeeper.db')
+=======
+    """Category model with all the calls to handle CRUD for Category"""
+    def __init__(self, category_id, name, description, parent_id):
+        self.category_id = category_id
+        self.name = name
+        self.description = description
+        self.parent_id = parent_id
+        self.db_location = '../ecpkeeper.db'
+
+    def add_category(self):
+        """ Add Category data to database"""
+        conn = sqlite3.connect(self.db_location)
+>>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
-            cur.execute('insert into category values (null,?,?,?,?,null)', (parent_id, name,
-                                                                            description, current_dateTime))
+            cur.execute('insert into category values (null,?,?,?,?,null)', (self.parent_id, self.name,
+                                                                            self.description, current_dateTime))
         conn.close()
-        logging.info('Added Category: {} - {} - {}'.format(name, description, parent_id))
+        logging.info('Added Category: {} - {} - {}'.format(self.name, self.description, self.parent_id))
 
+<<<<<<< Updated upstream
     @staticmethod
     def view_category_data():
         conn = sqlite3.connect('../ecpkeeper.db')
+=======
+    def view_category_data(self):
+        """Get all Category data from database"""
+        conn = sqlite3.connect(self.db_location)
+>>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
             cur.execute('select * from category')
@@ -44,17 +64,29 @@ class CategoryModel:
         conn.close()
         return rows
 
+<<<<<<< Updated upstream
     @staticmethod
     def delete_category_data(id):
         conn = sqlite3.connect('../ecpkeeper.db')
+=======
+    def delete_category_data(self):
+        """Delete Category from database based on id"""
+        conn = sqlite3.connect(self.db_location)
+>>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
-            cur.execute('delete from category where id=?', (id,))
+            cur.execute('delete from category where id=?', (self.category_id,))
         conn.close()
 
+<<<<<<< Updated upstream
     @staticmethod
     def search_category_data(name="", description="", parent_id=""):
         conn = sqlite3.connect('../ecpkeeper.db')
+=======
+    def search_category_data(self, name="", description="", parent_id=""):
+        """Search for Category in database based on different fields"""
+        conn = sqlite3.connect(self.db_location)
+>>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
             cur.execute('select * from category where name = ? or description = ? or parentid = ?',
@@ -63,11 +95,17 @@ class CategoryModel:
         conn.close()
         return rows
 
+<<<<<<< Updated upstream
     @staticmethod
     def update_category_data(id, name, description, parent_id=""):
         conn = sqlite3.connect('../ecpkeeper.db')
+=======
+    def update_category_data(self):
+        """Update existing Category using id"""
+        conn = sqlite3.connect(self.db_location)
+>>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
             cur.execute('update category set ParentId = ? OR Name = ? AND Description = ? AND DateModified = ?  \
-            where id=?', (parent_id, name, description, datemodified, id))
+            where id=?', (self.parent_id, self.name, self.description, datemodified, self.category_id))
         conn.close()
