@@ -21,9 +21,9 @@ class DistributorsForm(tk.Frame):
         self.right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
         self.add = tk.PhotoImage(
-            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\resources\images\add-24.png")
+            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\add-24.png")
         self.delete = tk.PhotoImage(
-            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\resources\images\file-delete-24.png")
+            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\file-delete-24.png")
 
         self.add_button = ttk.Button(self.upper_frame, text='Add', image=self.add, compound=tk.LEFT)
         self.delete_button = ttk.Button(self.upper_frame, text='Delete', image=self.delete, compound=tk.LEFT)

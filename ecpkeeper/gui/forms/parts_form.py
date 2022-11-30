@@ -9,6 +9,9 @@ from ecpkeeper.views.parts_parameters_treeview_view import PartParametersForm
 
 class PartForm(tk.Frame):
     def __init__(self, parent, data, callbacks, edit, **kwargs):
+        """
+
+        """
         super().__init__(parent, **kwargs)
         self.edit = edit
         self.callbacks = callbacks
@@ -37,9 +40,9 @@ class PartForm(tk.Frame):
         self.notebook.add(attachments_data, text='Attachments')
 
         self.save = tk.PhotoImage(
-            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\resources\images\save-24.png")
+            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\save-24.png")
         self.cancel = tk.PhotoImage(
-            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\resources\images\cancel-24.png")
+            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\cancel-24.png")
 
         self.save_button = ttk.Button(self.lower_frame, text='Save', image=self.save, compound=tk.LEFT,
                                       command=lambda: self.callbacks['parts-form--save_parts_form'](edit))
@@ -70,15 +73,10 @@ class PartForm(tk.Frame):
                 valid = False
         return valid
 
-    def get(self, edit):
-        part_data = {}
-        if edit is True:
-            part_data = self.edit_part_frame.get()
-        else:
-            part_data = self.add_part_frame.get()
+    def get(self):
         data = {
                 'part': [
-                    part_data
+                    self.part_frame.get()
                 ]
             }
         return data
