@@ -2,6 +2,7 @@ import tkinter as tk
 
 
 class MainMenu(tk.Menu):
+    """Setup for the Main menu of the application"""
     def __init__(self, parent, callbacks, **kwargs):
         super().__init__(parent, **kwargs)
         self.callbacks = callbacks

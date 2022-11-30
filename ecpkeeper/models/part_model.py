@@ -6,13 +6,6 @@ conn = sqlite3.connect('../var/ecpkeeper.db')
 
 
 class PartModel:
-<<<<<<< Updated upstream
-
-    @staticmethod
-    def add_part(name, description, category_id, minimum_stock, measurement_unit_id,
-                 footprint_id, storage_location_id, comment, production_remarks, status,
-                 needs_review, condition, internal_part_number):
-=======
     """ Part model with all the calls to handle CRUD for Part"""
     def __init__(self, part_id, name, description, category_id, minimum_stock, measurement_unit_id,
                  footprint_id, storage_location_id, comment, production_remarks, status, needs_review,
@@ -34,7 +27,6 @@ class PartModel:
 
     def add_part(self):
         """ Add Part data to database"""
->>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
             cur.execute('insert into part values (null, ?,?,?,?,?,?,?,?,?,?,?,?,?)', (self.name, self.description,
@@ -53,6 +45,7 @@ class PartModel:
 
     @staticmethod
     def view_part_data():
+        """Get all part data from database"""
         cur = conn.cursor()
         with conn:
             cur.execute('select * from part')
@@ -60,13 +53,9 @@ class PartModel:
         conn.close()
         return rows
 
-<<<<<<< Updated upstream
-    @staticmethod
-    def delete_part_data(part_id):
-=======
+
     def delete_part_data(self):
         """Delete part from database based on id"""
->>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
             cur.execute('delete from part where id=?', (self.part_id,))
@@ -76,6 +65,7 @@ class PartModel:
     def search_part_data(name="", description="", category_id="", minimum_stock="", measurement_unit_id="",
                          footprint_id="", storage_location_id="", comment="", production_remarks="", status="",
                          needs_review="", condition="", internal_part_number=""):
+        """Search for part in database based on different fields"""
         cur = conn.cursor()
         with conn:
             cur.execute('select * from part where name = ? or description = ? or categoryid = ? or \
@@ -92,15 +82,8 @@ class PartModel:
         conn.close()
         return rows
 
-<<<<<<< Updated upstream
-    @staticmethod
-    def update_part_data(part_id, name="", description="", category_id="", minimum_stock="", measurement_unit_id="",
-                         footprint_id="", storage_location_id="", comment="", production_remarks="", status="",
-                         needs_review="", condition="", internal_part_number=""):
-=======
     def update_part_data(self):
         """Update existing part using id"""
->>>>>>> Stashed changes
         cur = conn.cursor()
         with conn:
             cur.execute('update part set name = ?, description = ?, categoryid = ?, minimumstock = ?, \

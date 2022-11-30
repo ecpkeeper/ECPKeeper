@@ -4,37 +4,8 @@ conn = sqlite3.connect('../var/ecpkeeper.db')
 
 
 class CreateTable:
+    """Build database tables"""
     @staticmethod
-<<<<<<< Updated upstream
-    def setup():    
-        c = conn.cursor()
-
-        create_category_table(c)
-        create_footprint_categories_table(c)
-        create_footprint_table(c)
-        create_distributors_table(c)
-        create_manufacturers_table(c)
-        create_attachments_table(c)
-        create_si_prefixes_table(c)
-        create_units_table(c)
-        create_unit_si_prefixes_table(c)
-        create_measurement_units_table(c)
-        create_storage_location_categories_table(c)
-        create_storage_locations_table(c)
-        create_parameters_table(c)
-        create_parts_table(c)
-        create_stock_history_table(c)
-        create_part_parameters_table(c)
-        create_projects_table(c)
-        create_project_parts_table(c)
-        create_project_attachments_table(c)
-        create_part_distributors_table(c)
-        create_part_manufacturers_table(c)
-        conn.close()
-
-
-def create_category_table(c):
-=======
     def setup():
         """Connect to database and create each table"""
         c_cursor = conn.cursor()
@@ -65,7 +36,6 @@ def create_category_table(c):
 
 def create_category_table(c_cursor):
     """Create Category Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute("CREATE TABLE IF NOT EXISTS [Category] ( \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -78,12 +48,9 @@ def create_category_table(c_cursor):
     print("create_category_table ran successfully.")
 
 
-<<<<<<< Updated upstream
-def create_footprint_categories_table(c):
-=======
+
 def create_footprint_categories_table(c_cursor):
     """Create Footprint Categories Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [FootPrintCategory] ( \
             [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -94,14 +61,10 @@ def create_footprint_categories_table(c_cursor):
             [DateModified] TIMESTAMP, \
             FOREIGN KEY(ParentId) REFERENCES FootPrintCategory(Id))')
     print("create_footprint_categories_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_footprint_table(c):
-=======
+    
 def create_footprint_table(c_cursor):
     """Create Footprint Table"""
->>>>>>> Stashed changes
+
     with conn:
         c_cursor.execute("CREATE TABLE IF NOT EXISTS [FootPrint] ( \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -114,13 +77,8 @@ def create_footprint_table(c_cursor):
                 FOREIGN KEY(FootPrintCategoryId) REFERENCES FootPrintCategory(Id))")
     print("create_footprint_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_distributors_table(c):
-=======
 def create_distributors_table(c_cursor):
     """Create Distributors Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Distributor] (  \
             [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -135,14 +93,9 @@ def create_distributors_table(c_cursor):
             [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
             [DateModified] TIMESTAMP)')
     print("create_distributors_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_manufacturers_table(c):
-=======
+    
 def create_manufacturers_table(c_cursor):
     """Create Manufacturers Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Manufacturer] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -158,13 +111,8 @@ def create_manufacturers_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_manufacturers_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_attachments_table(c):
-=======
 def create_attachments_table(c_cursor):
     """Create Attachments Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Attachment] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -175,13 +123,8 @@ def create_attachments_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_attachments_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_si_prefixes_table(c):
-=======
 def create_si_prefixes_table(c_cursor):
     """Create Si Prefixes Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [SIPrefix] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -192,13 +135,8 @@ def create_si_prefixes_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_si_prefixes_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_units_table(c):
-=======
 def create_units_table(c_cursor):
     """Create Units Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Unit] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -208,13 +146,8 @@ def create_units_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_units_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_unit_si_prefixes_table(c):
-=======
 def create_unit_si_prefixes_table(c_cursor):
     """Create Unit Si Prefixes Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [PartSIPrefix] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -225,14 +158,9 @@ def create_unit_si_prefixes_table(c_cursor):
                 FOREIGN KEY(SIPrefixId) REFERENCES SIPrefix(Id), \
                 FOREIGN KEY(UnitId) REFERENCES Unit(Id))')
     print("create_unit_si_prefixes_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_measurement_units_table(c):
-=======
+    
 def create_measurement_units_table(c_cursor):
     """Create Measurement Units Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [MeasurementUnit] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -242,13 +170,8 @@ def create_measurement_units_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_measurement_units_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_storage_location_categories_table(c):
-=======
 def create_storage_location_categories_table(c_cursor):
     """Create Storage Location Categories Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [StorageLocationCategory] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -259,14 +182,9 @@ def create_storage_location_categories_table(c_cursor):
                 [DateModified] TIMESTAMP, \
                 FOREIGN KEY(ParentId) REFERENCES StorageLocationCategory(Id))')
     print("create_storage_location_categories_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_storage_locations_table(c):
-=======
+    
 def create_storage_locations_table(c_cursor):
     """Create Storage Location Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [StorageLocation] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -278,13 +196,8 @@ def create_storage_locations_table(c_cursor):
                 FOREIGN KEY(CategoryId) REFERENCES StorageLocationCategory(Id))')
     print("create_storage_locations_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_parameters_table(c):
-=======
 def create_parameters_table(c_cursor):
     """Create Parameters Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Parameter] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -303,14 +216,9 @@ def create_parameters_table(c_cursor):
                 [DateModified] TIMESTAMP, \
                 FOREIGN KEY(UnitId) REFERENCES Unit(Id))')
     print("create_parameters_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_parts_table(c):
-=======
+    
 def create_parts_table(c_cursor):
     """Create Part Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Part] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -335,13 +243,8 @@ def create_parts_table(c_cursor):
                 FOREIGN KEY(StorageLocationId) REFERENCES StorageLocation(Id))')
     print("create_parts_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_stock_history_table(c):
-=======
 def create_stock_history_table(c_cursor):
     """Create Stock history Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [StockHistory] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -353,13 +256,8 @@ def create_stock_history_table(c_cursor):
                 FOREIGN KEY(PartId) REFERENCES Part(Id))')
     print("create_stock_history_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_part_parameters_table(c):
-=======
 def create_part_parameters_table(c_cursor):
     """Create Part Parameters Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [PartParameter] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -370,14 +268,9 @@ def create_part_parameters_table(c_cursor):
                 FOREIGN KEY(ParameterId) REFERENCES Parameter(Id), \
                 FOREIGN KEY(PartId) REFERENCES Part(Id))')
     print("create_part_parameters_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_projects_table(c):
-=======
+    
 def create_projects_table(c_cursor):
     """Create Projects Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [Project] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -386,14 +279,9 @@ def create_projects_table(c_cursor):
                 [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
                 [DateModified] TIMESTAMP)')
     print("create_projects_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_project_parts_table(c):
-=======
+    
 def create_project_parts_table(c_cursor):
     """Create Project Parts Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [ProjectPart] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -410,13 +298,8 @@ def create_project_parts_table(c_cursor):
                 FOREIGN KEY(PartId) REFERENCES Part(Id))')
     print("create_project_parts_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_project_attachments_table(c):
-=======
 def create_project_attachments_table(c_cursor):
     """Create Project Attachments Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [ProjectAttachment] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -429,13 +312,8 @@ def create_project_attachments_table(c_cursor):
                 FOREIGN KEY(AttachmentId) REFERENCES Attachment(Id))')
     print("create_project_attachments_table ran successfully.")
 
-
-<<<<<<< Updated upstream
-def create_part_distributors_table(c):
-=======
 def create_part_distributors_table(c_cursor):
     """Create Part Distributors Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [PartDistributor] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \
@@ -454,14 +332,9 @@ def create_part_distributors_table(c_cursor):
                 FOREIGN KEY(PartId) REFERENCES Part(Id), \
                 FOREIGN KEY(DistributorId) REFERENCES Distributor(Id))')
     print("create_part_distributors_table ran successfully.")
-
-
-<<<<<<< Updated upstream
-def create_part_manufacturers_table(c):
-=======
+    
 def create_part_manufacturers_table(c_cursor):
     """Create Part Manufacturers Table"""
->>>>>>> Stashed changes
     with conn:
         c_cursor.execute('CREATE TABLE IF NOT EXISTS [PartManufacturers] (  \
                 [Id] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \

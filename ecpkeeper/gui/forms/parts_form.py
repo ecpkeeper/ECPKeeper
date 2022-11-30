@@ -9,7 +9,7 @@ from ecpkeeper.views.parts_parameters_treeview_view import PartParametersForm
 
 class PartForm(tk.Frame):
     def __init__(self, parent, data, callbacks, edit, **kwargs):
-        """"""
+        """Build Part Form window and load either edit or add Part Frame"""
         super().__init__(parent, **kwargs)
         self.edit = edit
         self.callbacks = callbacks
@@ -65,7 +65,7 @@ class PartForm(tk.Frame):
         self.grab_set()
 
     def is_valid(self):
-        """"""
+        """Are widgets in self.fields Valid"""
         valid = True
         for key, widget in self.fields.items():
             if not widget.is_valid():
@@ -73,7 +73,7 @@ class PartForm(tk.Frame):
         return valid
 
     def get(self):
-        """"""
+        """ Get Data From Part Form"""
         data = {
                 'part': [
                     self.part_frame.get()

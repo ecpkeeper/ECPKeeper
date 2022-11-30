@@ -3,6 +3,7 @@ import tkinter as tk
 
 
 class Spinbox(ttk.Spinbox):
+    """ Spinbox with validation"""
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
         validate_command = self.register(self._validate_all)
@@ -14,6 +15,7 @@ class Spinbox(ttk.Spinbox):
         )
 
     def _validate_all(self, d, i, P, s, S, v, V):
+        """Validate All"""
         print('d:{} i:{} P:{} s:{} S:{} v:{} V:{}'.format(d, i, P, s, S, v, V))
         valid = True
         if V == 'key':
@@ -22,6 +24,7 @@ class Spinbox(ttk.Spinbox):
 
     @staticmethod
     def _validate_key(self, d, i, P, s, S):
+        """Validate Key"""
         try:
             int(S)
         except ValueError:
@@ -32,4 +35,5 @@ class Spinbox(ttk.Spinbox):
 
     @staticmethod
     def _invalid_command(self, d, i, P, s, S, v, V):
+        """Invalid Command"""
         print('Invalid! d:{} i:{} P:{} s:{} S:{} v:{} V:{}'.format(d, i, P, s, S, v, V))
