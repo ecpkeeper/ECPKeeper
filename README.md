@@ -1,7 +1,7 @@
 
 ECPKeeper
 ======
-
+[![Build Status](https://github.com/ecpkeeper/ECPKeeper/workflows/build/badge.svg)](https://github.com/ecpkeeper/ECPKeeper/actions?query=workflow%3Abuild)
 Open Source Electronic Component Inventory Management
 
 Overview
