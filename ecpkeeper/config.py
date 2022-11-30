@@ -25,20 +25,17 @@ class AppConfig:
         for font in ('TkHeadingFont', 'TkTextFont', 'TkDefaultFont'):
             f = tkfont.nametofont(font)
             f.configure(size=int(self.cp['Appearance']['fontsize']))
-        return
-
+            
     def save(self):
         """Save settings"""
         with open('setting.ini', 'w') as configfile:
             self.cp.write(configfile)
-        return
 
     def load(self):
         """Load Settings"""
         self.cp.read_dict(DEFAULT_CONFIG)
         self.cp.read('setting.ini')
         self._update_font()
-        return
 
     def update_settings(self, data):
         """Update Settings"""
@@ -46,4 +43,3 @@ class AppConfig:
             self.cp.set('Appearance', 'fontsize', data['fontsize'])
             self._update_font()
         self.save()
-        return
