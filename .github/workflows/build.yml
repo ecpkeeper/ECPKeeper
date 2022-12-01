@@ -15,11 +15,11 @@ jobs:
       run: |
         sudo apt update
         python -m pip install --upgrade pip
-        pip install pytest pylint
+        pip install pytest pylint pylint-exit
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py') || pylint-exit $?
     - name: Test with pytest
       run: pytest
     - name: Report Success or failure as github status
