@@ -1,9 +1,27 @@
+"""
+Open Source Electronic Component Inventory Management.
+Copyright (C) 2022 DOS1986
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
 from tkinter import ttk
 import tkinter as tk
 
 
 class CustomNotebook(ttk.Notebook):
     """A ttk Notebook with close buttons on each tab"""
+    # pylint: disable=too-many-ancestors
+    # Eight is reasonable in this case.
+    # pylint: disable=inconsistent-return-statements
     __initialized = False
 
     def __init__(self, *args, **kwargs):
@@ -21,14 +39,13 @@ class CustomNotebook(ttk.Notebook):
 
     def on_close_press(self, event):
         """Called when the button is pressed over the close button"""
-
         element = self.identify(event.x, event.y)
-
         if "close" in element:
-            index = self.index("@%d,%d" % (event.x, event.y))
+            index = self.index(f"@{event.x},{event.y}")
             self.state(['pressed'])
             self._active = index
             return "break"
+        return
 
     def on_close_release(self, event):
         """Called when the button is released"""
@@ -40,7 +57,7 @@ class CustomNotebook(ttk.Notebook):
             # user moved the mouse off of the close button
             return
 
-        index = self.index("@%d,%d" % (event.x, event.y))
+        index = self.index(f"@{event.x},{event.y}")
         if index > 0:
             if self._active == index:
                 self.forget(index)
