@@ -20,8 +20,8 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py') || pylint-exit $?
-    - name: Test with pytest
-      run: pytest
+#     - name: Test with pytest
+#       run: pytest
     - name: Report Success or failure as github status
       if: always()
       shell: bash
