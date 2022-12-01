@@ -42,11 +42,26 @@ class PartForm(tk.Frame):
         self.cancel = tk.PhotoImage(
             file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\cancel-24.png")
 
+<<<<<<< Updated upstream
         self.save_button = ttk.Button(self.lower_frame, text='Save', image=self.save, compound=tk.LEFT,
                                       command=lambda: self.callbacks['parts-form--save_parts_form'](edit))
         self.cancel_button = ttk.Button(self.lower_frame, text='Cancel', image=self.cancel, compound=tk.LEFT)
         self.save_button.pack(side=tk.LEFT)
         self.cancel_button.pack(side=tk.LEFT)
+=======
+        save_button = ttk.Button(lower_frame,
+                                 text='Save',
+                                 image=self.save,
+                                 compound=tk.LEFT,
+                                 command=lambda: self.callbacks['parts-form--save_parts_form'](edit)
+                                 )
+        cancel_button = ttk.Button(lower_frame,
+                                   text='Cancel',
+                                   image=self.cancel,
+                                   compound=tk.LEFT)
+        save_button.pack(side=tk.LEFT)
+        cancel_button.pack(side=tk.LEFT)
+>>>>>>> Stashed changes
 
         if edit is True:
             self.data = {'name': 'this is a test of the name field',

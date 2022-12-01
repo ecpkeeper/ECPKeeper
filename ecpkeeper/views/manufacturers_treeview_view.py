@@ -10,17 +10,18 @@ class ManufacturersForm(tk.Frame):
 
         self.data = data
 
-        self.wrapper_frame = self
-        self.wrapper_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
-        self.upper_frame = tk.Frame(self.wrapper_frame)
-        self.upper_frame.pack(fill=tk.X, side=tk.TOP)
-        self.lower_frame = tk.Frame(self.wrapper_frame, bg='black')
-        self.lower_frame.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=1)
-        self.left_frame = tk.Frame(self.lower_frame)
-        self.left_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
-        self.right_frame = tk.Frame(self.lower_frame)
-        self.right_frame.pack(side=tk.LEFT, fill=tk.Y)
+        wrapper_frame = self
+        wrapper_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
+        manufacturers_upper_frame = tk.Frame(wrapper_frame)
+        manufacturers_upper_frame.pack(fill=tk.X, side=tk.TOP)
+        manufacturers_lower_frame = tk.Frame(wrapper_frame, bg='black')
+        manufacturers_lower_frame.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=1)
+        manufacturers_left_frame = tk.Frame(manufacturers_lower_frame)
+        manufacturers_left_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
+        manufacturers_right_frame = tk.Frame(manufacturers_lower_frame)
+        manufacturers_right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
+<<<<<<< Updated upstream
         self.add = tk.PhotoImage(
             file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\add-24.png")
         self.delete = tk.PhotoImage(
@@ -28,34 +29,60 @@ class ManufacturersForm(tk.Frame):
 
         self.add_button = ttk.Button(self.upper_frame, text='Add', image=self.add, compound=tk.LEFT)
         self.delete_button = ttk.Button(self.upper_frame, text='Delete', image=self.delete, compound=tk.LEFT)
+=======
+        manufacturers_add = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/add-24.png')
+        manufacturers_delete = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/file-delete-24.png')
 
-        self.treeview = ttk.Treeview(self.left_frame, show='headings', height=26)
-        self.treeview['columns'] = (' Manufacturer  ', ' Part Number  ')
+        manufacturers_add_button = ttk.Button(manufacturers_upper_frame,
+                                              text='Add',
+                                              image=manufacturers_add,
+                                              compound=tk.LEFT)
+        manufacturers_delete_button = ttk.Button(manufacturers_upper_frame,
+                                                 text='Delete',
+                                                 image=manufacturers_delete,
+                                                 compound=tk.LEFT)
+>>>>>>> Stashed changes
 
-        self.set_headers(self.treeview['columns'])
+        self.manufacturers_treeview = ttk.Treeview(manufacturers_left_frame,
+                                                   show='headings',
+                                                   height=26)
+        self.manufacturers_treeview['columns'] = (' Manufacturer  ', ' Part Number  ')
 
-        self.scrollbar = tk.Scrollbar(self.right_frame, orient=tk.VERTICAL)
-        self.treeview.config(yscrollcommand=self.scrollbar.set)
-        self.scrollbar.config(command=self.treeview.yview())
+        self.set_headers(self.manufacturers_treeview['columns'])
+
+        scrollbar = tk.Scrollbar(manufacturers_right_frame, orient=tk.VERTICAL)
+        self.manufacturers_treeview.config(yscrollcommand=scrollbar.set)
+        scrollbar.config(command=self.manufacturers_treeview.yview())
 
         # Layout
-        self.add_button.pack(side=tk.LEFT)
-        self.delete_button.pack(side=tk.LEFT)
-        self.treeview.pack(fill=tk.BOTH, expand=1)
-        self.scrollbar.pack(fill=tk.Y, expand=1)
+        manufacturers_add_button.pack(side=tk.LEFT)
+        manufacturers_delete_button.pack(side=tk.LEFT)
+        self.manufacturers_treeview.pack(fill=tk.BOTH, expand=1)
+        scrollbar.pack(fill=tk.Y, expand=1)
 
         self.load_records()
 
     def load_records(self):
         """Load records into the form"""
         for key, record in self.data.items():
+<<<<<<< Updated upstream
             self.treeview.insert('', 'end', iid=key, text='Manufacturer ID: {}'.format(key),
                                  values=[record['Manufacturer'], record['Part Number']])
+=======
+            self.manufacturers_treeview.insert('',
+                                               'end',
+                                               iid=key,
+                                               text=f'Manufacturer ID: {key}',
+                                               values=[record['Manufacturer'],
+                                                       record['Part Number']])
+>>>>>>> Stashed changes
 
     def set_headers(self, columns):
         """Set headers of the Treeview"""
-        self.treeview.configure(columns=columns)
+        self.manufacturers_treeview.configure(columns=columns)
         for i, col in enumerate(columns):
             column_width = tk_font.Font().measure(col.title())
-            self.treeview.heading(i, text=col)
-            self.treeview.column(i, width=column_width, stretch=True)
+            self.manufacturers_treeview.heading(i, text=col)
+            self.manufacturers_treeview.column(i, width=column_width, stretch=True)
