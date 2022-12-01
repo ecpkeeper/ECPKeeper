@@ -1,3 +1,18 @@
+"""
+Open Source Electronic Component Inventory Management.
+Copyright (C) 2022 DOS1986
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
 import sqlite3
 from datetime import datetime
 import logging
@@ -37,11 +52,10 @@ class CategoryModel:
         conn = sqlite3.connect(self.db_location)
         cur = conn.cursor()
         with conn:
-            cur.execute('insert into category values (null,?,?,?,?,null)', (self.parent_id, self.name,
-                                                                            self.description, current_dateTime))
+            cur.execute('insert into category values (null,?,?,?,?,null)',
+                        (self.parent_id, self.name, self.description, current_dateTime))
         conn.close()
-        logging.info('Added Category: {} - {} - {}'.format(self.name, self.description, self.parent_id))
-
+        logging.info('Added Category: %s - %s - %s', self.name, self.description, self.parent_id)
 
     def view_category_data(self):
         """Get all Category data from database"""
@@ -52,7 +66,6 @@ class CategoryModel:
             rows = cur.fetchall()
         conn.close()
         return rows
-
 
     def delete_category_data(self):
         """Delete Category from database based on id"""
@@ -78,6 +91,13 @@ class CategoryModel:
         conn = sqlite3.connect(self.db_location)
         cur = conn.cursor()
         with conn:
-            cur.execute('update category set ParentId = ? OR Name = ? AND Description = ? AND DateModified = ?  \
-            where id=?', (self.parent_id, self.name, self.description, datemodified, self.category_id))
+            cur.execute('update category set ParentId = ? \
+            OR Name = ? \
+            AND Description = ? \
+            AND DateModified = ?  \
+            where id=?', (self.parent_id,
+                          self.name,
+                          self.description,
+                          datemodified,
+                          self.category_id))
         conn.close()

@@ -1,3 +1,18 @@
+"""
+Open Source Electronic Component Inventory Management.
+Copyright (C) 2022 DOS1986
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
 import sqlite3
 
 conn = sqlite3.connect('../var/ecpkeeper.db')
@@ -48,7 +63,6 @@ def create_category_table(c_cursor):
     print("create_category_table ran successfully.")
 
 
-
 def create_footprint_categories_table(c_cursor):
     """Create Footprint Categories Table"""
     with conn:
@@ -61,7 +75,8 @@ def create_footprint_categories_table(c_cursor):
             [DateModified] TIMESTAMP, \
             FOREIGN KEY(ParentId) REFERENCES FootPrintCategory(Id))')
     print("create_footprint_categories_table ran successfully.")
-    
+
+
 def create_footprint_table(c_cursor):
     """Create Footprint Table"""
 
@@ -76,6 +91,7 @@ def create_footprint_table(c_cursor):
                 [DateModified] TIMESTAMP, \
                 FOREIGN KEY(FootPrintCategoryId) REFERENCES FootPrintCategory(Id))")
     print("create_footprint_table ran successfully.")
+
 
 def create_distributors_table(c_cursor):
     """Create Distributors Table"""
@@ -93,7 +109,8 @@ def create_distributors_table(c_cursor):
             [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
             [DateModified] TIMESTAMP)')
     print("create_distributors_table ran successfully.")
-    
+
+
 def create_manufacturers_table(c_cursor):
     """Create Manufacturers Table"""
     with conn:
@@ -111,6 +128,7 @@ def create_manufacturers_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_manufacturers_table ran successfully.")
 
+
 def create_attachments_table(c_cursor):
     """Create Attachments Table"""
     with conn:
@@ -122,6 +140,7 @@ def create_attachments_table(c_cursor):
                 [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
                 [DateModified] TIMESTAMP)')
     print("create_attachments_table ran successfully.")
+
 
 def create_si_prefixes_table(c_cursor):
     """Create Si Prefixes Table"""
@@ -135,6 +154,7 @@ def create_si_prefixes_table(c_cursor):
                 [DateModified] TIMESTAMP)')
     print("create_si_prefixes_table ran successfully.")
 
+
 def create_units_table(c_cursor):
     """Create Units Table"""
     with conn:
@@ -145,6 +165,7 @@ def create_units_table(c_cursor):
                 [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
                 [DateModified] TIMESTAMP)')
     print("create_units_table ran successfully.")
+
 
 def create_unit_si_prefixes_table(c_cursor):
     """Create Unit Si Prefixes Table"""
@@ -158,7 +179,8 @@ def create_unit_si_prefixes_table(c_cursor):
                 FOREIGN KEY(SIPrefixId) REFERENCES SIPrefix(Id), \
                 FOREIGN KEY(UnitId) REFERENCES Unit(Id))')
     print("create_unit_si_prefixes_table ran successfully.")
-    
+
+
 def create_measurement_units_table(c_cursor):
     """Create Measurement Units Table"""
     with conn:
@@ -169,6 +191,7 @@ def create_measurement_units_table(c_cursor):
                 [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
                 [DateModified] TIMESTAMP)')
     print("create_measurement_units_table ran successfully.")
+
 
 def create_storage_location_categories_table(c_cursor):
     """Create Storage Location Categories Table"""
@@ -182,7 +205,8 @@ def create_storage_location_categories_table(c_cursor):
                 [DateModified] TIMESTAMP, \
                 FOREIGN KEY(ParentId) REFERENCES StorageLocationCategory(Id))')
     print("create_storage_location_categories_table ran successfully.")
-    
+
+
 def create_storage_locations_table(c_cursor):
     """Create Storage Location Table"""
     with conn:
@@ -195,6 +219,7 @@ def create_storage_locations_table(c_cursor):
                 [DateModified] TIMESTAMP, \
                 FOREIGN KEY(CategoryId) REFERENCES StorageLocationCategory(Id))')
     print("create_storage_locations_table ran successfully.")
+
 
 def create_parameters_table(c_cursor):
     """Create Parameters Table"""
@@ -216,7 +241,8 @@ def create_parameters_table(c_cursor):
                 [DateModified] TIMESTAMP, \
                 FOREIGN KEY(UnitId) REFERENCES Unit(Id))')
     print("create_parameters_table ran successfully.")
-    
+
+
 def create_parts_table(c_cursor):
     """Create Part Table"""
     with conn:
@@ -243,6 +269,7 @@ def create_parts_table(c_cursor):
                 FOREIGN KEY(StorageLocationId) REFERENCES StorageLocation(Id))')
     print("create_parts_table ran successfully.")
 
+
 def create_stock_history_table(c_cursor):
     """Create Stock history Table"""
     with conn:
@@ -256,6 +283,7 @@ def create_stock_history_table(c_cursor):
                 FOREIGN KEY(PartId) REFERENCES Part(Id))')
     print("create_stock_history_table ran successfully.")
 
+
 def create_part_parameters_table(c_cursor):
     """Create Part Parameters Table"""
     with conn:
@@ -268,7 +296,8 @@ def create_part_parameters_table(c_cursor):
                 FOREIGN KEY(ParameterId) REFERENCES Parameter(Id), \
                 FOREIGN KEY(PartId) REFERENCES Part(Id))')
     print("create_part_parameters_table ran successfully.")
-    
+
+
 def create_projects_table(c_cursor):
     """Create Projects Table"""
     with conn:
@@ -279,7 +308,8 @@ def create_projects_table(c_cursor):
                 [DateCreated] TIMESTAMP DEFAULT CURRENT_TIMESTAMP, \
                 [DateModified] TIMESTAMP)')
     print("create_projects_table ran successfully.")
-    
+
+
 def create_project_parts_table(c_cursor):
     """Create Project Parts Table"""
     with conn:
@@ -298,6 +328,7 @@ def create_project_parts_table(c_cursor):
                 FOREIGN KEY(PartId) REFERENCES Part(Id))')
     print("create_project_parts_table ran successfully.")
 
+
 def create_project_attachments_table(c_cursor):
     """Create Project Attachments Table"""
     with conn:
@@ -311,6 +342,7 @@ def create_project_attachments_table(c_cursor):
                 FOREIGN KEY(ProjectId) REFERENCES Project(Id), \
                 FOREIGN KEY(AttachmentId) REFERENCES Attachment(Id))')
     print("create_project_attachments_table ran successfully.")
+
 
 def create_part_distributors_table(c_cursor):
     """Create Part Distributors Table"""
@@ -332,7 +364,8 @@ def create_part_distributors_table(c_cursor):
                 FOREIGN KEY(PartId) REFERENCES Part(Id), \
                 FOREIGN KEY(DistributorId) REFERENCES Distributor(Id))')
     print("create_part_distributors_table ran successfully.")
-    
+
+
 def create_part_manufacturers_table(c_cursor):
     """Create Part Manufacturers Table"""
     with conn:

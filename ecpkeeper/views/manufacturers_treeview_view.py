@@ -1,14 +1,33 @@
+"""
+Open Source Electronic Component Inventory Management.
+Copyright (C) 2022 DOS1986
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
 from tkinter import ttk
 import tkinter.font as tk_font
 import tkinter as tk
+from pathlib import Path
 
 
 class ManufacturersForm(tk.Frame):
     """Manufacturers Form"""
+    # pylint: disable=too-many-instance-attributes
+    # Eight is reasonable in this case.
     def __init__(self, parent, data, callbacks, **kwargs):
         super().__init__(parent, **kwargs)
 
         self.data = data
+        self.callbacks = callbacks
 
         wrapper_frame = self
         wrapper_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
@@ -21,15 +40,6 @@ class ManufacturersForm(tk.Frame):
         manufacturers_right_frame = tk.Frame(manufacturers_lower_frame)
         manufacturers_right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-<<<<<<< Updated upstream
-        self.add = tk.PhotoImage(
-            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\add-24.png")
-        self.delete = tk.PhotoImage(
-            file=r"C:\code\python\src\github.com\DOS1986\ECPKeeper\ecpkeeper\assets\images\file-delete-24.png")
-
-        self.add_button = ttk.Button(self.upper_frame, text='Add', image=self.add, compound=tk.LEFT)
-        self.delete_button = ttk.Button(self.upper_frame, text='Delete', image=self.delete, compound=tk.LEFT)
-=======
         manufacturers_add = tk.PhotoImage(
             file=f'{Path.cwd()}/ecpkeeper/assets/images/add-24.png')
         manufacturers_delete = tk.PhotoImage(
@@ -43,7 +53,6 @@ class ManufacturersForm(tk.Frame):
                                                  text='Delete',
                                                  image=manufacturers_delete,
                                                  compound=tk.LEFT)
->>>>>>> Stashed changes
 
         self.manufacturers_treeview = ttk.Treeview(manufacturers_left_frame,
                                                    show='headings',
@@ -67,17 +76,12 @@ class ManufacturersForm(tk.Frame):
     def load_records(self):
         """Load records into the form"""
         for key, record in self.data.items():
-<<<<<<< Updated upstream
-            self.treeview.insert('', 'end', iid=key, text='Manufacturer ID: {}'.format(key),
-                                 values=[record['Manufacturer'], record['Part Number']])
-=======
             self.manufacturers_treeview.insert('',
                                                'end',
                                                iid=key,
                                                text=f'Manufacturer ID: {key}',
                                                values=[record['Manufacturer'],
                                                        record['Part Number']])
->>>>>>> Stashed changes
 
     def set_headers(self, columns):
         """Set headers of the Treeview"""
