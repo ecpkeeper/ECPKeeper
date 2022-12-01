@@ -56,9 +56,9 @@ class PartForm(tk.Frame):
         notebook.add(tabs['part_parameters_data'], text='Part Parameters')
         notebook.add(tabs['attachments_data'], text='Attachments')
 
-        self.save = tk.PhotoImage(file=f'{Path.cwd()}/ecpkeeper/assets/images/save-24.png')
-        self.cancel = tk.PhotoImage(file=f'{Path.cwd()}/ecpkeeper/assets/images/cancel-24.png')
-
+        print(f'{Path.cwd()}\\ecpkeeper\\assets\\images\\save-24.png')
+        self.save = tk.PhotoImage(file=f'{Path.cwd()}\\ecpkeeper\\assets\\images\\save-24.png')
+        self.cancel = tk.PhotoImage(file=f'{Path.cwd()}\\ecpkeeper\\assets\\images\\cancel-24.png')
 
         save_button = ttk.Button(lower_frame,
                                  text='Save',
@@ -72,7 +72,6 @@ class PartForm(tk.Frame):
                                    compound=tk.LEFT)
         save_button.pack(side=tk.LEFT)
         cancel_button.pack(side=tk.LEFT)
-
 
         if edit is True:
             self.data = {'name': 'this is a test of the name field',

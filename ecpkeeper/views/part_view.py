@@ -123,7 +123,7 @@ class PartView(tk.Frame):
                               padx=5,
                               pady=5)
         self.production_remarks_lbl.grid(column=0, row=7,
-                                         ticky='w',
+                                         sticky='w',
                                          padx=5,
                                          pady=5)
         self.status_lbl.grid(column=0, row=8,

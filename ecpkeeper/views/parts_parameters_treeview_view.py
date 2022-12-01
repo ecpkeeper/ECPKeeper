@@ -38,19 +38,19 @@ class PartParametersForm(tk.Frame):
         part_parameters_right_frame = tk.Frame(part_parameters_lower_frame)
         part_parameters_right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-        part_parameters_add = tk.PhotoImage(
-            file=f'{Path.cwd()}/ecpkeeper/ecpkeeper/assets/images/add-24.png')
-        part_parameters_delete = tk.PhotoImage(
-            file=f'{Path.cwd()}/ecpkeeper/ecpkeeper/assets/images/file-delete-24.png')
+        self.part_parameters_add = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/add-24.png')
+        self.part_parameters_delete = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/file-delete-24.png')
 
         part_parameters_add_button = ttk.Button(part_parameters_upper_frame,
                                                 text='Add',
-                                                image=part_parameters_add,
+                                                image=self.part_parameters_add,
                                                 compound=tk.LEFT)
 
         part_parameters_delete_button = ttk.Button(part_parameters_upper_frame,
                                                    text='Delete',
-                                                   image=part_parameters_delete,
+                                                   image=self.part_parameters_delete,
                                                    compound=tk.LEFT)
 
         self.part_parameters_treeview = ttk.Treeview(part_parameters_left_frame,

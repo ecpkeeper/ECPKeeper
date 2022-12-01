@@ -29,6 +29,8 @@ from . import gui
 
 class Win(tk.Tk):
     """Main Window container."""
+    # pylint: disable=too-many-instance-attributes
+    # pylint: disable=too-many-arguments
     def __init__(self, **kwargs):
         super().__init__(*kwargs)
         self._appconfig = config.AppConfig()

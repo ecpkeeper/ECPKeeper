@@ -40,18 +40,18 @@ class DistributorsForm(tk.Frame):
         distributors_right_frame = tk.Frame(distributors_lower_frame)
         distributors_right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-        distributors_add = tk.PhotoImage(
-            file=f'{Path.cwd()}/ecpkeeper/ecpkeeper/assets/images/add-24.png')
-        distributors_delete = tk.PhotoImage(
-            file=f'{Path.cwd()}/ecpkeeper/ecpkeeper/assets/images/file-delete-24.png')
+        self.distributors_add = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/add-24.png')
+        self.distributors_delete = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/file-delete-24.png')
 
         distributors_add_button = ttk.Button(distributors_upper_frame,
                                              text='Add',
-                                             image=distributors_add,
+                                             image=self.distributors_add,
                                              compound=tk.LEFT)
         distributors_delete_button = ttk.Button(distributors_upper_frame,
                                                 text='Delete',
-                                                image=distributors_delete,
+                                                image=self.distributors_delete,
                                                 compound=tk.LEFT)
 
         self.distributors_treeview = ttk.Treeview(distributors_left_frame,

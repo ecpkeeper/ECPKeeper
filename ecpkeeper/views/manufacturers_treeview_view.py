@@ -40,18 +40,18 @@ class ManufacturersForm(tk.Frame):
         manufacturers_right_frame = tk.Frame(manufacturers_lower_frame)
         manufacturers_right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-        manufacturers_add = tk.PhotoImage(
+        self.manufacturers_add = tk.PhotoImage(
             file=f'{Path.cwd()}/ecpkeeper/assets/images/add-24.png')
-        manufacturers_delete = tk.PhotoImage(
+        self.manufacturers_delete = tk.PhotoImage(
             file=f'{Path.cwd()}/ecpkeeper/assets/images/file-delete-24.png')
 
         manufacturers_add_button = ttk.Button(manufacturers_upper_frame,
                                               text='Add',
-                                              image=manufacturers_add,
+                                              image=self.manufacturers_add,
                                               compound=tk.LEFT)
         manufacturers_delete_button = ttk.Button(manufacturers_upper_frame,
                                                  text='Delete',
-                                                 image=manufacturers_delete,
+                                                 image=self.manufacturers_delete,
                                                  compound=tk.LEFT)
 
         self.manufacturers_treeview = ttk.Treeview(manufacturers_left_frame,
