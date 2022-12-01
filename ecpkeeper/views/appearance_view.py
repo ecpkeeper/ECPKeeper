@@ -21,6 +21,7 @@ class PreferencesAppearance(tk.Frame):
     """Preferences - Appearance Form"""
     def __init__(self, parent, callbacks, **kwargs):
         super().__init__(parent, **kwargs)
+        self.callbacks = callbacks
         self.inputs = {}
         self.font_size_var = tk.IntVar()
         self.font_size_label = ttk.Label(self, text='Font size')

@@ -1,3 +1,18 @@
+"""
+Open Source Electronic Component Inventory Management.
+Copyright (C) 2022 DOS1986
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
 import tkinter as tk
 
 
@@ -9,8 +24,12 @@ class MainMenu(tk.Menu):
 
         # add menu items to the File menu
         file_menu = tk.Menu(self, tearoff=False)
-        file_menu.add_command(label="New", command=lambda: self.callbacks['file--open_add_part_window'](self, True))
-        file_menu.add_command(label="Open", command=lambda: self.callbacks['file--open_edit_part_window'](self, True))
+        file_menu.add_command(label="New",
+                              command=lambda:
+                              self.callbacks['file--open_add_part_window'](self, True))
+        file_menu.add_command(label="Open",
+                              command=lambda:
+                              self.callbacks['file--open_edit_part_window'](self, True))
         file_menu.add_command(label="Save")
         file_menu.add_command(label="Save as...")
         file_menu.add_separator()
@@ -25,15 +44,22 @@ class MainMenu(tk.Menu):
         self.add_cascade(label="File", underline=0, menu=file_menu)
         # create the Edit menu
         edit_menu = tk.Menu(self, tearoff=0)
-        edit_menu.add_command(label="Projects", command=self.callbacks['edit--open_projects_tab'])
-        edit_menu.add_command(label="Footprints", command=self.callbacks['edit--open_footprints_tab'])
-        edit_menu.add_command(label="Manufacturers", command=self.callbacks['edit--open_manufacturers_tab'])
-        edit_menu.add_command(label="Storage Locations", command=self.callbacks['edit--open_storage_locations_tab'])
-        edit_menu.add_command(label="Distributors", command=self.callbacks['edit--open_distributors_tab'])
-        edit_menu.add_command(label="Users", command=self.callbacks['edit--open_users_tab'])
+        edit_menu.add_command(label="Projects",
+                              command=self.callbacks['edit--open_projects_tab'])
+        edit_menu.add_command(label="Footprints",
+                              command=self.callbacks['edit--open_footprints_tab'])
+        edit_menu.add_command(label="Manufacturers",
+                              command=self.callbacks['edit--open_manufacturers_tab'])
+        edit_menu.add_command(label="Storage Locations",
+                              command=self.callbacks['edit--open_storage_locations_tab'])
+        edit_menu.add_command(label="Distributors",
+                              command=self.callbacks['edit--open_distributors_tab'])
+        edit_menu.add_command(label="Users",
+                              command=self.callbacks['edit--open_users_tab'])
         edit_menu.add_command(label="Part Measurement Units",
                               command=self.callbacks['edit--open_part_measurement_units_tab'])
-        edit_menu.add_command(label="Units", command=self.callbacks['edit--open_units_tab'])
+        edit_menu.add_command(label="Units",
+                              command=self.callbacks['edit--open_units_tab'])
         self.add_cascade(label="Edit", menu=edit_menu)
         # create the View menu
         view_menu = tk.Menu(self, tearoff=0)

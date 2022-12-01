@@ -21,12 +21,13 @@ from pathlib import Path
 
 class PartsManagementForm(tk.Frame):
     """Parts Management Form"""
+
     def __init__(self, parent, data, callbacks, **kwargs):
         super().__init__(parent, **kwargs)
-        
+
         self.data = data
         self.callbacks = callbacks
-        
+
         wrapper_frame = self
         wrapper_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
         parts_management_upper_frame = tk.Frame(wrapper_frame)
@@ -38,18 +39,18 @@ class PartsManagementForm(tk.Frame):
         parts_management_right_frame = tk.Frame(parts_management_lower_frame)
         parts_management_right_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-        parts_management_add = tk.PhotoImage(
-            file=f'{Path.cwd()}/ecpkeeper/ecpkeeper/assets/images/add-24.png')
-        parts_management_delete = tk.PhotoImage(
-            file=f'{Path.cwd()}/ecpkeeper/ecpkeeper/assets/images/file-delete-24.png')
+        self.parts_management_add = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/add-24.png')
+        self.parts_management_delete = tk.PhotoImage(
+            file=f'{Path.cwd()}/ecpkeeper/assets/images/file-delete-24.png')
 
         parts_management_add_button = ttk.Button(parts_management_upper_frame,
                                                  text='Add',
-                                                 image=parts_management_add,
+                                                 image=self.parts_management_add,
                                                  compound=tk.LEFT)
         parts_management_delete_button = ttk.Button(parts_management_upper_frame,
                                                     text='Delete',
-                                                    image=parts_management_delete,
+                                                    image=self.parts_management_delete,
                                                     compound=tk.LEFT)
 
         self.parts_management_treeview = ttk.Treeview(parts_management_left_frame,
