@@ -24,12 +24,9 @@ class MainMenu(tk.Menu):
 
         # add menu items to the File menu
         file_menu = tk.Menu(self, tearoff=False)
-        file_menu.add_command(label="New",
-                              command=lambda:
-                              self.callbacks['file--open_add_part_window'](self, True))
-        file_menu.add_command(label="Open",
-                              command=lambda:
-                              self.callbacks['file--open_edit_part_window'](self, True))
+        file_menu.add_command(label="New", command=lambda:
+                              self.callbacks['part_detail_form'](self, True))
+        file_menu.add_command(label="Open")
         file_menu.add_command(label="Save")
         file_menu.add_command(label="Save as...")
         file_menu.add_separator()

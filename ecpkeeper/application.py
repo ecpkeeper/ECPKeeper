@@ -24,13 +24,13 @@ from ecpkeeper import menus
 from ecpkeeper import config
 from ecpkeeper.controllers.project_controller import ProjectController
 from ecpkeeper.views.parts_management_treeview_view import PartsManagementForm
+from views.part_detail_view import PartDetailView
 from . import gui
 
 
 class Win(tk.Tk):
     """Main Window container."""
     # pylint: disable=too-many-instance-attributes
-    # pylint: disable=too-many-arguments
     def __init__(self, **kwargs):
         super().__init__(*kwargs)
         self._appconfig = config.AppConfig()
@@ -51,6 +51,7 @@ class Win(tk.Tk):
             'edit--open_part_measurement_units_tab': self.open_part_measurement_units_tab,
             'edit--open_units_tab': self.open_units_tab,
             'settings--preferences': self.open_preferences_window,
+            'part_detail_form': self.open_part_details_window,
             'parts-form--save_parts_form': self.save_parts_form,
             'help--about': self.about
         }
@@ -59,32 +60,36 @@ class Win(tk.Tk):
         # Menu
         menu = menus.MainMenu(self, self.callbacks)
         self.configure(menu=menu)
+
         # First layer of elements
-        self.wrapper_frame = tk.Frame(self)
-        self.wrapper_frame.pack(expand=True, fill=tk.BOTH)
-        self.main_frame = tk.Frame(self.wrapper_frame)
-        self.main_frame.configure(bg='lightblue')
-        self.main_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
-        self.status_bar = tk.Frame(self.wrapper_frame)
-        self.status_bar.pack(side=tk.BOTTOM, fill=tk.X)
-        self.status_bar.configure(relief='ridge', bd=1, bg='white')
-        self.status_bar_label = ttk.Label(self.status_bar, text='STATUS BAR!')
-        self.status_bar_label.pack(side=tk.LEFT)
-        self.workspace_frame = tk.Frame(self.main_frame)
-        self.right_nav_frame = tk.Frame(self.main_frame, width=300)
-        self.workspace_frame.configure(bg='#5D6D7E')
-        self.right_nav_frame.configure(bg='#85929E')
-        self.workspace_frame.pack(side=tk.LEFT, expand=1, fill=tk.BOTH)
-        self.right_nav_frame.pack(side=tk.LEFT, fill=tk.BOTH)
-        self.custom_notebook = gui.widgets.custom_notebook.CustomNotebook(self.workspace_frame)
-        self.parts_management_tab = tk.Frame(self.custom_notebook)
-        self.custom_notebook.add(self.parts_management_tab, text="Parts Management")
+        wrapper_frame = tk.Frame(self)
+        wrapper_frame.pack(expand=True, fill=tk.BOTH)
+        main_frame = tk.Frame(wrapper_frame)
+        main_frame.configure(bg='lightblue')
+        main_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
+
+        status_bar = tk.Frame(wrapper_frame)
+        status_bar.pack(side=tk.BOTTOM, fill=tk.X)
+        status_bar.configure(relief='ridge', bd=1, bg='white')
+        status_bar_label = ttk.Label(status_bar, text='STATUS BAR!')
+        status_bar_label.pack(side=tk.LEFT)
+
+        workspace_frame = tk.Frame(main_frame)
+        workspace_frame.configure(bg='#5D6D7E')
+        workspace_frame.pack(side=tk.LEFT, expand=1, fill=tk.BOTH)
+
+        self.custom_notebook = gui.widgets.custom_notebook.CustomNotebook(workspace_frame)
+        parts_management_tab = tk.Frame(self.custom_notebook)
+        self.custom_notebook.add(parts_management_tab, text="Parts Management")
         self.custom_notebook.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
-        self.parts_management = PartsManagementForm(self.parts_management_tab, {}, self.callbacks)
+
+        self.parts_management = PartsManagementForm(parts_management_tab, {}, self.callbacks)
         self.parts_management.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
 
         self.part_form_window = None
         self.part_form = None
+        self.part_detail_window = None
+        self.part_detail_form = None
         self.preferences_form_window = None
         self.preferences_form = None
 
@@ -113,7 +118,7 @@ class Win(tk.Tk):
         self.part_form_window.resizable(False, False)
         if model is True:
             self.part_form_window.grab_set()
-        self.part_form = gui.forms.parts_form.PartForm(
+        self.part_form = gui.forms.part_form.PartForm(
             self.part_form_window,
             {},
             self.callbacks,
@@ -121,6 +126,22 @@ class Win(tk.Tk):
         )
         self.part_form.pack()
         self.part_form_window.focus()
+
+    def open_part_details_window(self, called_from=None, model=False):
+        """Open Part Detail Window"""
+        self.part_detail_window = gui.widgets.toplevel.Toplevel(self, called_from, model)
+        self.part_detail_window.title('Part Detail')
+        self.part_detail_window.minsize(480, 320)
+        self.part_detail_window.resizable(False, False)
+        if model is True:
+            self.part_detail_window.grab_set()
+        self.part_detail_form = gui.forms.part_detail_form.PartDetailForm(
+            self.part_detail_window,
+            {},
+            self.callbacks
+        )
+        self.part_detail_form.pack()
+        self.part_detail_window.focus()
 
     def open_edit_part_window(self, called_from=None, model=False):
         """Open Part Window -- Edit Part Frame"""
@@ -131,7 +152,7 @@ class Win(tk.Tk):
         self.part_form_window.resizable(False, False)
         if model is True:
             self.part_form_window.grab_set()
-        self.part_form = gui.forms.parts_form.PartForm(
+        self.part_form = gui.forms.part_form.PartForm(
             self.part_form_window,
             {}, self.callbacks,
             True
@@ -145,6 +166,7 @@ class Win(tk.Tk):
         print(f'This is the part_form_window: {self.part_form_window.model}')
         if self.part_form.is_valid():
             data = self.part_form.get()
+            self.parts_management.load_records(data)
             print(data)
         if previous_form is not None:
             previous_form.focus()
