@@ -47,7 +47,9 @@ class PartsManagementForm(tk.Frame):
         parts_management_add_button = ttk.Button(parts_management_upper_frame,
                                                  text='Add',
                                                  image=self.parts_management_add,
-                                                 compound=tk.LEFT)
+                                                 compound=tk.LEFT,
+                                                 command=lambda:
+                                                 self.callbacks['file--open_add_part_window'](self, True))
         parts_management_delete_button = ttk.Button(parts_management_upper_frame,
                                                     text='Delete',
                                                     image=self.parts_management_delete,
@@ -79,24 +81,25 @@ class PartsManagementForm(tk.Frame):
         self.parts_management_treeview.pack(fill=tk.BOTH, expand=1)
         scrollbar.pack(fill=tk.Y, expand=1)
 
-        self.load_records()
+        self.load_records(data)
 
-    def load_records(self):
+    def load_records(self, data):
         """Load records into the form"""
-        for key, record in self.data.items():
-            self.parts_management_treeview.insert('', 'end',
-                                                  iid=key,
-                                                  text=f'Part ID: {key}',
-                                                  values=[record['Name'],
-                                                          record['Description'],
-                                                          record['Storage Location'],
-                                                          record['Status'],
-                                                          record['Condition'],
-                                                          record['Stock'],
-                                                          record['Min. Stock'],
-                                                          record['Avg. Price'],
-                                                          record['Footprint'],
-                                                          record['Internal ID']])
+        for key, record in data.items():
+            if key == "part":
+                self.parts_management_treeview.insert('', 'end',
+                                                      iid=key,
+                                                      text=f'Part ID: {key}',
+                                                      values=(record[0]['name'],
+                                                              record[0]['description'],
+                                                              record[0]['storage_location'],
+                                                              record[0]['status'],
+                                                              record[0]['condition'],
+                                                              record[0]['initial_stock_level_spinbox'],
+                                                              record[0]['minimum_stock'],
+                                                              record[0]['price_spinbox'],
+                                                              record[0]['footprint'],
+                                                              record[0]['internal_part_number']))
 
     def set_headers(self, columns):
         """Set headers of the Treeview"""

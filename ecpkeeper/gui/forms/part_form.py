@@ -56,7 +56,6 @@ class PartForm(tk.Frame):
         notebook.add(tabs['part_parameters_data'], text='Part Parameters')
         notebook.add(tabs['attachments_data'], text='Attachments')
 
-        print(f'{Path.cwd()}\\ecpkeeper\\assets\\images\\save-24.png')
         self.save = tk.PhotoImage(file=f'{Path.cwd()}\\ecpkeeper\\assets\\images\\save-24.png')
         self.cancel = tk.PhotoImage(file=f'{Path.cwd()}\\ecpkeeper\\assets\\images\\cancel-24.png')
 
@@ -64,7 +63,7 @@ class PartForm(tk.Frame):
                                  text='Save',
                                  image=self.save,
                                  compound=tk.LEFT,
-                                 command=lambda: self.callbacks['parts-form--save_parts_form'](edit)
+                                 command=self.callbacks['parts-form--save_parts_form']
                                  )
         cancel_button = ttk.Button(lower_frame,
                                    text='Cancel',
@@ -95,6 +94,7 @@ class PartForm(tk.Frame):
             tabs['part_parameters_data'],
             {},
             self.callbacks)
+
         self.part_frame.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
         self.distributor_frame.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
         self.manufacturers_frame.pack(side=tk.TOP, expand=1, fill=tk.BOTH)
