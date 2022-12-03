@@ -1,6 +1,6 @@
 ---
 name: 🐛 Bug report
-description: File a bug report here
+about: File a bug report here
 title: "[BUG]: "
 labels: ["Issue-Bug", "Needs-Triage"]
 assignees: ["DOS1986"]

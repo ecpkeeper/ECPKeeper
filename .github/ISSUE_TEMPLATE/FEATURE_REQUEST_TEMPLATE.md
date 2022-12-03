@@ -1,8 +1,9 @@
 ---
 name: ✨Feature Request
-description: Request a new feature or enhancement
+about: Request a new feature or enhancement
+title: "["FEATURE"]: "
 labels: ["enhancement"]
-title: "["FEAT"]: "
+assignees: ["DOS1986"]
 ---
 body:
 - type: markdown
