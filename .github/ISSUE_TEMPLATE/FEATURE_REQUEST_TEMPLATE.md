@@ -1,8 +1,8 @@
 ---
 name: ✨Feature Request
 about: Request a new feature or enhancement
-title: "["FEATURE"]: "
-labels: ["enhancement"]
+title: "[FEAT]: "
+labels: ["Enhancement"]
 assignees: ["DOS1986"]
 ---
 body:
