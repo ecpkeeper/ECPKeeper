@@ -1,13 +1,17 @@
+---
 name: ✨Feature Request
 description: Request a new feature or enhancement
 labels: ["enhancement"]
-title: "[FEAT]: "
+title: "["FEAT"]: "
+---
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Please make sure this feature request hasn't been already submitted by someone by looking through other open/closed issues
-
+- type: markdown
+  attributes:
+    value: |
+      Please make sure this feature request hasn't been already submitted by someone by looking through other open/closed issues
+    options:
+    - label: I have searched the existing issues
+      required: true
   - type: textarea
     id: description
     attributes:
