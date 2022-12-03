@@ -19,4 +19,7 @@ from . import appearance_view, \
     manufacturers_treeview_view, \
     part_view, \
     parts_management_treeview_view, \
-    parts_parameters_treeview_view
+    parts_parameters_treeview_view, \
+    part_extra_detail_treeview_view, \
+    part_parameters_view, \
+    part_stock_history_treeview_view

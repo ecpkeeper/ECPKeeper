@@ -16,8 +16,7 @@ Copyright (C) 2022 DOS1986
 from tkinter import ttk
 import tkinter as tk
 
-from ecpkeeper.views import part_detail_view
-from ecpkeeper.views import stock_history_view
+from views import part_extra_detail_treeview_view, part_stock_history_treeview_view
 
 
 class PartDetailForm(tk.Frame):
@@ -42,16 +41,22 @@ class PartDetailForm(tk.Frame):
 
         tabs['part_details'] = tk.Frame(notebook)
         tabs['stock_history'] = tk.Frame(notebook)
+        tabs['part_parameters'] = tk.Frame(notebook)
+        tabs['attachments'] = tk.Frame(notebook)
+        tabs['images'] = tk.Frame(notebook)
 
         notebook.add(tabs['part_details'], text='Part Details')
         notebook.add(tabs['stock_history'], text='Stock History')
+        notebook.add(tabs['part_parameters'], text='Part Parameters')
+        notebook.add(tabs['attachments'], text='Attachments')
+        notebook.add(tabs['images'], text='Images')
 
-        self.part_frame = part_detail_view.PartDetailView(
+        self.part_frame = part_extra_detail_treeview_view.PartExtraDetailForm(
             tabs['part_details'],
             self.data,
             self.callbacks
         )
-        self.distributor_frame = stock_history_view.StockHistoryView(
+        self.distributor_frame = part_stock_history_treeview_view.PartStockHistoryForm(
             tabs['stock_history'],
             {},
             self.callbacks)

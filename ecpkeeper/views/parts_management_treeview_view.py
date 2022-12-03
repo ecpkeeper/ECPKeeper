@@ -18,6 +18,8 @@ import tkinter.font as tk_font
 import tkinter as tk
 from pathlib import Path
 
+import menus
+
 
 class PartsManagementForm(tk.Frame):
     """Parts Management Form"""
@@ -27,6 +29,39 @@ class PartsManagementForm(tk.Frame):
 
         self.data = data
         self.callbacks = callbacks
+
+        def popup(event):
+            """Popup window with context menu for Parts Management"""
+            print('popup window fired')
+            iid = self.parts_management_treeview.identify_row(event.y)
+            print(f'iid is firing ok: {iid}')
+            if iid:
+                print(f"iid is being caught but it looks like the wrong thing")
+                # mouse pointer over item
+                self.parts_management_treeview.selection_set(iid)
+                print(context_menu)
+                try:
+                    context_menu.tk_popup(event.x_root, event.y_root)
+                finally:
+                    context_menu.grab_release()
+            else:
+                # mouse pointer not over item
+                # occurs when items do not fill frame
+                # no action required
+                pass
+
+        context_menu = tk.Menu(self, tearoff=False)
+        context_menu.add_command(label="Edit Part", command=lambda:
+                                 self.callbacks['part_detail_form'](self, True))
+        context_menu.add_separator()
+        context_menu.add_command(label="Add Stock", command=lambda:
+                                 self.callbacks['part_detail_form'](self, True))
+        context_menu.add_command(label="Remove Stock", command=lambda:
+                                 self.callbacks['part_parameters_form'](self, True))
+        context_menu.add_separator()
+        context_menu.add_command(label="Part Extra Details", command=lambda:
+                                 self.callbacks['part_detail_form'](self, True))
+
 
         wrapper_frame = self
         wrapper_frame.pack(expand=1, fill=tk.BOTH, side=tk.TOP)
@@ -78,6 +113,7 @@ class PartsManagementForm(tk.Frame):
         # Layout
         parts_management_add_button.pack(side=tk.LEFT)
         parts_management_delete_button.pack(side=tk.LEFT)
+        self.parts_management_treeview.bind("<Button-3>", popup)
         self.parts_management_treeview.pack(fill=tk.BOTH, expand=1)
         scrollbar.pack(fill=tk.Y, expand=1)
 

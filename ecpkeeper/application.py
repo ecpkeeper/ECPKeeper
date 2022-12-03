@@ -24,7 +24,7 @@ from ecpkeeper import menus
 from ecpkeeper import config
 from ecpkeeper.controllers.project_controller import ProjectController
 from ecpkeeper.views.parts_management_treeview_view import PartsManagementForm
-from views.part_detail_view import PartDetailView
+
 from . import gui
 
 
@@ -53,7 +53,7 @@ class Win(tk.Tk):
             'settings--preferences': self.open_preferences_window,
             'part_detail_form': self.open_part_details_window,
             'parts-form--save_parts_form': self.save_parts_form,
-            'help--about': self.about
+            'help--about': self.about,
         }
         # Root configuration for minimize, resize support
         self.minsize(1024, 768)
