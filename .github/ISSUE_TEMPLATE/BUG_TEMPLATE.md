@@ -1,8 +1,10 @@
+---
 name: 🐛 Bug report
 description: File a bug report here
 title: "[BUG]: "
-labels: [Issue-Bug, Needs-Triage]
+labels: ["Issue-Bug", "Needs-Triage"]
 assignees: ["DOS1986"]
+---
 body:
   - type: markdown
     attributes:
@@ -18,9 +20,9 @@ body:
   - type: textarea
     id: what-happened
     attributes:
-      label: Bug description
+      label: Bug Description
       description:
-        What is the bug about? Please give a brief description of what happened and what should of happened
+        What is the bug about? Please give a brief description of what happened and what should've happened.
       placeholder:
     validations:
       required: true
