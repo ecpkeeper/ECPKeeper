@@ -1,10 +1,9 @@
----
 name: 💭 Proposal
-about: Suggest an idea for a specific feature you wish to propose to the community for comment
+description: Suggest an idea for a specific feature you wish to propose to the community for comment
 title: "[PROPOSAL]: "
 labels: ["Proposal"]
 assignees: ["DOS1986"]
----
+
 ## What/Why
 ### What are you proposing?
 _In a few sentences, describe the feature and its core capabilities._
@@ -20,9 +19,6 @@ _Does this have a REST API? If so, please describe the API and any impact it may
 
 #### Are there any security considerations? 
 _Describe if the feature has any security considerations or impact. What is the security model of the new APIs? Features should be integrated into the OpenSearch security suite and so if they are not, we should highlight the reasons here._
-
-#### Are there any breaking changes to the API
-_If this feature will require breaking changes to any APIs, outline what those are and why they are needed. What is the path to minimizing impact? (example, add new API and deprecate the old one)_
 
 ### What is the user experience going to be?
 _Describe the feature requirements and or user stories. You may include low-fidelity sketches, wireframes, APIs stubs, or other examples of how a user would use the feature via CLI, OpenSearch Dashboards, REST API, etc. Using a bulleted list or simple diagrams to outline features is okay. If this is net new functionality, call this out as well._
