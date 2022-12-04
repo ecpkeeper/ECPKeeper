@@ -33,7 +33,7 @@ body:
       this is a test 
   validations:
     required: true
-
+    
 - type: textarea
   id: steps-to-reproduce
   attributes:
