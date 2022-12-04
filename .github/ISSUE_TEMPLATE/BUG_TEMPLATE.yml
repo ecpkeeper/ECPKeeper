@@ -68,8 +68,7 @@ body:
 - type: dropdown
   id: operating-system
   attributes: 
-    label: Windows build number
-    Description: If this issue is occurring on more than 1 operating system, select the appropriate operating system.
+    label: What operating system were you using?
     options:
       - Other
       - Windows
@@ -82,5 +81,5 @@ body:
   attributes:
     label: OS Version
     description: >-
-      Provide all relevant information below, e.g. OS version etc.
+      Provide all relevant information below, e.g. OS version,  etc.
     placeholder: Fedora 33, Cygwin, Windows 10, Windows XP, Mac OS 9.10 etc.
