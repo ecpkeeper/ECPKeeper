@@ -17,11 +17,11 @@ body:
 - type: checkboxes
   attributes:
     label: Searched existing issues.
-    multiple: false
     options:
-      - I have searched existing issues already.
-      - I have not searched any issues
+      - label: I have searched existing issues already.
         required: true
+      - label: I have not searched any issues
+        
 
 - type: textarea
     id: what-happened
@@ -48,12 +48,12 @@ body:
 - type: textarea
     id: additional-information
     attributes:
-      label:  Additional Information
-      description:  Provide any additional information such as logs, screenshots, likes, scenarios in which the bug occurs so that it facilitates resolving the issue.
+      label: Additional Information
+      description: Provide any additional information such as logs, screenshots, likes, scenarios in which the bug occurs so that it facilitates resolving the issue.
     validations:
       required: true
   
-- type: textarea
+- type: input
     id: application-version
     attributes:
       label: ECPKeeper version
@@ -65,10 +65,9 @@ body:
   
 - type: dropdown
     id: operating-system
-    attributes:
+    attributes: 
       label: Windows build number
       Description: If this issue is occurring on more than 1 operating system, select the appropriate operating system.
-      multiple: true
       options:
         - Other
         - Windows

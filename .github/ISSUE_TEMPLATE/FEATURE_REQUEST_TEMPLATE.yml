@@ -10,19 +10,25 @@ body:
       Please make sure this feature request hasn't been already submitted by someone by looking through other open/closed issues
 
 - type: checkboxes
+  id: search-existing-issues
   attributes:
     label: Searched existing issues.
-    multiple: false
+    description: Please make sure this feature request hasn't already been submitted by someone by looking through other open/closed issues.
     options:
-      - I have searched existing issues already.
-      - I have not searched any issues
+      - label: I have searched existing issues already.
         required: true
+      - label: I have not searched any issues
+        
 
 - type: textarea
     id: description
     attributes:
       label: Description
       description: Give us a brief description of the feature or enhancement you would like
+      value: |
+        1.
+        2. 
+        3.
     validations:
       required: true
 
