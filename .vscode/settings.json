@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-issue-forms.json": "file:///c%3A/code/python/src/github.com/DOS1986/ECPKeeper/.github/ISSUE_TEMPLATE/BUG_TEMPLATE.yml"
+    }
+}

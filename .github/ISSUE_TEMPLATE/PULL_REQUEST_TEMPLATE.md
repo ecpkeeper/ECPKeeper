@@ -1,8 +1,10 @@
 
 # 📑 Description
+
 Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
-<!-- If this pull request closes an issue, please mention the issue number below -->
+If this pull request closes an issue, please mention the issue number below
+
 Fixes # (issue)
 
 ## Type of change
@@ -22,12 +24,15 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Test B
 
 **Test Configuration**:
-* Application version:
-* Operating System:
-* Operating System Version:
 
-## ✅ Checklist:
-<!-- Make sure your pr passes the CI checks and do check the following fields as needed - -->
+-Application version:
+-Operating System:
+-Operating System Version:
+
+## ✅ Checklist
+
+Make sure your pr passes the CI checks and do check the following fields as needed -
+
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -38,4 +43,4 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Any dependent changes have been merged and published in downstream modules
 
 ## ℹ Additional Information
-<!-- Any additional information like breaking changes, dependencies added, screenshots, comparisons between new and old behavior, etc. -->
+Any additional information like breaking changes, dependencies added, screenshots, comparisons between new and old behavior, etc.
