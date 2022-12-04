@@ -22,14 +22,11 @@ body:
         required: true
       - label: I have not searched any issues
         
-
 - type: textarea
     id: what-happened
     attributes:
       label: Bug Description
-      description:
-        What is the bug about? Please give a brief description of what happened and what should've happened.
-      placeholder:
+      description: What is the bug about? Please give a brief description of what happened and what should've happened.
     validations:
       required: true
 
